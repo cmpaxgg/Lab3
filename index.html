@@ -29,6 +29,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src="./main.js"></script>
     <script src="./popper.min.js"></script>
+    <script src="node_modules/less/dist/less.min.js"></script>
+
+    <script>
+      var Theme_number = 1;
+      var Default_theme = 1;
+      var Ext = "less";
+      //var Ext = "css";
+
+      function getUrl(num) {
+        return Ext + "/" + Ext + ".style" + num + ".css";
+      }
+
+      function getThemeNumber() {
+        Theme_number = Theme_number % 2 === 0 ? 1 : 2;
+        return Theme_number;
+      }
+
+      function initialize() {
+        var link = document.createElement("link");
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("href", getUrl(Default_theme));
+        link.setAttribute("class", "css-link");
+        document.head.appendChild(link);
+      }
+
+      function initListener() {
+        document
+          .querySelector(".mynav__theme")
+          .addEventListener("click", changeTheme);
+      }
+
+      function changeTheme() {
+        document.head
+          .querySelector(".css-link")
+          .setAttribute("href", getUrl(getThemeNumber()));
+      }
+
+      initialize();
+
+      window.addEventListener("load", initListener);
+    </script>
   </head>
   <body>
     <header>
@@ -97,6 +138,18 @@
                   aria-controls="contacts"
                   aria-selected="false"
                   >Контакты</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-light"
+                  id="less-tab"
+                  data-toggle="tab"
+                  href="#less"
+                  role="tab"
+                  aria-controls="contacts"
+                  aria-selected="false"
+                  >LESS</a
                 >
               </li>
             </ul>
@@ -538,6 +591,130 @@
                 </div>
               </div>
             </form>
+          </div>
+        </div>
+        <div
+          class="tab-pane container"
+          id="less"
+          role="tabpanel"
+          aria-labelledby="gallery-tab"
+        >
+          <div class="wrapper">
+            <nav class="mynav">
+              <button class="mynav__theme">Change theme</button>
+              <ul class="mynav__menu">
+                <li class="mynav__item">
+                  <a href="#" class="mynav__link">Home</a>
+                </li>
+                <li class="mynav__item">
+                  <a href="#" class="mynav__link">About</a>
+                </li>
+                <li class="mynav__item">
+                  <a href="#" class="mynav__link">Items</a>
+                </li>
+                <li class="mynav__item">
+                  <a href="#" class="mynav__link">Contact</a>
+                </li>
+              </ul>
+            </nav>
+
+            <section class="main">
+              <div class="main__content">
+
+                <!-- В лабе не было класа main__tile -->
+                <div class="main__tile main__tile--danger">
+                  <div class="main__header">Product 1</div>
+                  <ul class="main__features">
+                    <li class="main__item">
+                      Feature 1<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">
+                      Feature 2<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">
+                      Feature 3<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">Feature 4</li>
+                    <li class="main__item">Feature 5</li>
+                  </ul>
+
+                  <div class="main__footer">
+                    <button class="main__button main__button--danger">
+                      Click on me!
+                    </button>
+                  </div>
+                </div>
+
+                <div class="main__tile main__tile--warning">
+                  <div class="main__header">Product 2</div>
+                  <ul class="main__features">
+                    <li class="main__item">
+                      Feature 1<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">Feature 2</li>
+                    <li class="main__item">
+                      Feature 3<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">
+                      Feature 4<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">Feature 5</li>
+                  </ul>
+
+                  <div class="main__footer">
+                    <button class="main__button main__button--warning">
+                      Click on me!
+                    </button>
+                  </div>
+                </div>
+
+                <div class="main__tile main__tile--primary">
+                  <div class="main__header">Product 3</div>
+                  <ul class="main__features">
+                    <li class="main__item">Feature 1</li>
+                    <li class="main__item">
+                      Feature 2<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">
+                      Feature 3<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">
+                      Feature 4<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">Feature 5</li>
+                  </ul>
+
+                  <div class="main__footer">
+                    <button class="main__button main__button--primary">
+                      Click on me!
+                    </button>
+                  </div>
+                </div>
+
+                <div class="main__tile main__tile--success">
+                  <div class="main__header">Product 4</div>
+                  <ul class="main__features">
+                    <li class="main__item">
+                      Feature 1<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">Feature 2</li>
+                    <li class="main__item">Feature 3</li>
+                    <li class="main__item">
+                      Feature 4<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">
+                      Feature 5<span class="main__plus">+</span>
+                    </li>
+                  </ul>
+
+                  <div class="main__footer">
+                    <button class="main__button main__button--success">
+                      Click on me!
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
 

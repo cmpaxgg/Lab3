@@ -13,7 +13,7 @@ $(document).ready(function () {
     }
   );
 
-  // Логіка для підрахунку лайків в кнопці лайків
+  // Подсчет лайков
   $(".btn-counter").on("click", function (event, count) {
     event.preventDefault();
 
@@ -28,7 +28,7 @@ $(document).ready(function () {
       [multiple ? "noop" : "toggleClass"]("active");
   });
 
-  // Логіка для спливаючого вікна
+  // Всплывающее окно
   $("#liveToastBtn").click(function() {
     console.log('clicked');
 
