@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <title>Hello, world! Sounds good</title>
+    <title>Hello, world!</title>
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css" />
@@ -23,12 +23,57 @@
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
       crossorigin="anonymous"
     />
+    <!-- <link rel="stylesheet" href="css/css.style1.css" />
+    <link rel="stylesheet" href="css/css.style2.css" />
+    <link rel="stylesheet/less" type="text/css" href="less/less.style1.less" />
+    <link rel="stylesheet/less" type="text/css" href="less/less.style2.less" /> -->
 
     <script src="./jquery-3.3.1.min.js"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src="./main.js"></script>
     <script src="./popper.min.js"></script>
+    <script src="node_modules/less/dist/less.min.js"></script>
+
+    <script>
+      var Theme_number = 1;
+      var Default_theme = 1;
+      var Ext = "less";
+      //var Ext = "css";
+
+      function getUrl(num) {
+        return Ext + "/" + Ext + ".style" + num + ".css";
+      }
+
+      function getThemeNumber() {
+        Theme_number = Theme_number % 2 === 0 ? 1 : 2;
+        return Theme_number;
+      }
+
+      function initialize() {
+        var link = document.createElement("link");
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("href", getUrl(Default_theme));
+        link.setAttribute("class", "css-link");
+        document.head.appendChild(link);
+      }
+
+      function initListener() {
+        document
+          .querySelector(".mynav__theme")
+          .addEventListener("click", changeTheme);
+      }
+
+      function changeTheme() {
+        document.head
+          .querySelector(".css-link")
+          .setAttribute("href", getUrl(getThemeNumber()));
+      }
+
+      initialize();
+
+      window.addEventListener("load", initListener);
+    </script>
   </head>
   <body>
     <header>
@@ -97,6 +142,18 @@
                   aria-controls="contacts"
                   aria-selected="false"
                   >Контакты</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-light"
+                  id="contacts-tab"
+                  data-toggle="tab"
+                  href="#less"
+                  role="tab"
+                  aria-controls="contacts"
+                  aria-selected="false"
+                  >LESS</a
                 >
               </li>
             </ul>
@@ -335,16 +392,16 @@
         <!-- Тестирование -->
 
         <div
-          class="tab-pane container"
-          id="testing"
-          role="tabpanel"
-          aria-labelledby="gallery-tab"
+                class="tab-pane container"
+                id="testing"
+                role="tabpanel"
+                aria-labelledby="gallery-tab"
         >
           <!-- 11.3.1 + 11.3.2 -->
           <div class="container pt-5 mb-3">
             <div class="row mb-5">
               <div
-                class="
+                      class="
                   col-lg-6 col-md-4 col-sm-6 col
                   align-self-start
                   border border-primary
@@ -357,7 +414,7 @@
                 Column one
               </div>
               <div
-                class="
+                      class="
                   col-lg-4 col-md-6 col-sm-6 col
                   align-self-center
                   border border-primary
@@ -377,64 +434,64 @@
               <div class="col-10">
                 <table class="table table-striped table-responsive-sm">
                   <thead>
-                    <tr>
-                      <th
-                        scope="col"
-                        colspan="12"
-                        class="container text-center text-secondary"
+                  <tr>
+                    <th
+                            scope="col"
+                            colspan="12"
+                            class="container text-center text-secondary"
+                    >
+                      <div
+                              class="row align-items-center justify-content-center"
                       >
-                        <div
-                          class="row align-items-center justify-content-center"
-                        >
                           <span class="col-3 text-center">
                             Тестовая таблица ТМ
                             <img
-                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png"
-                              alt="..."
-                              style="height: 25px; width: 30px"
+                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png"
+                                    alt="..."
+                                    style="height: 25px; width: 30px"
                             />
                           </span>
-                        </div>
-                      </th>
-                    </tr>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Java</th>
-                      <th scope="col">C++</th>
-                      <th scope="col">Python</th>
-                      <th scope="col">JavaScript</th>
-                      <th scope="col">Ruby</th>
-                      <th scope="col">C#</th>
-                    </tr>
+                      </div>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Java</th>
+                    <th scope="col">C++</th>
+                    <th scope="col">Python</th>
+                    <th scope="col">JavaScript</th>
+                    <th scope="col">Ruby</th>
+                    <th scope="col">C#</th>
+                  </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>JDBC</td>
-                      <td>Poco</td>
-                      <td>Jango</td>
-                      <td>Angular</td>
-                      <td>Ruby on Rails</td>
-                      <td>.Net</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Hibernate</td>
-                      <td>Asio C++</td>
-                      <td>Flask</td>
-                      <td>Node</td>
-                      <td>Grape</td>
-                      <td>ASP.Net</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Spring</td>
-                      <td>Silicon</td>
-                      <td>CherryPy</td>
-                      <td>React</td>
-                      <td>Roda</td>
-                      <td>MVVMLight</td>
-                    </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>JDBC</td>
+                    <td>Poco</td>
+                    <td>Jango</td>
+                    <td>Angular</td>
+                    <td>Ruby on Rails</td>
+                    <td>.Net</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Hibernate</td>
+                    <td>Asio C++</td>
+                    <td>Flask</td>
+                    <td>Node</td>
+                    <td>Grape</td>
+                    <td>ASP.Net</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Spring</td>
+                    <td>Silicon</td>
+                    <td>CherryPy</td>
+                    <td>React</td>
+                    <td>Roda</td>
+                    <td>MVVMLight</td>
+                  </tr>
                   </tbody>
                 </table>
               </div>
@@ -458,15 +515,15 @@
           <!-- 11.3.4 -->
           <div class="row mb-3 justify-content-center">
             <button
-              title="Love it"
-              id="liveToastBtn"
-              class="
+                    title="Love it"
+                    id="liveToastBtn"
+                    class="
                 btn btn-block
                 col-1
                 btn-outline-primary btn-counter
                 multiple-count
               "
-              data-count="0"
+                    data-count="0"
             >
               <span>&#x2764; Like</span>
             </button>
@@ -476,11 +533,11 @@
             <!-- Всплывающее окно -->
             <div class="position-relative top-0 start-50 p-3" style="z-index: 5">
               <div
-                id="liveToast"
-                class="toast hide"
-                role="alert"
-                aria-live="assertive"
-                aria-atomic="true"
+                      id="liveToast"
+                      class="toast hide"
+                      role="alert"
+                      aria-live="assertive"
+                      aria-atomic="true"
               >
                 <div class="toast-header">
                   <strong class="me-auto"></strong>
@@ -495,29 +552,29 @@
 
         <!-- Контакты -->
         <div
-          class="tab-pane container"
-          id="contacts"
-          role="tabpanel"
-          aria-labelledby="gallery-tab"
+                class="tab-pane container"
+                id="contacts"
+                role="tabpanel"
+                aria-labelledby="gallery-tab"
         >
           <div class="row justify-content-md-center">
             <form class="mt-4 col-9">
               <div class="mb-3">
                 <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="email"
+                        type="email"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder="email"
                 />
               </div>
               <div class="mb-3">
                 <div class="form-floating">
                   <textarea
-                    class="form-control"
-                    placeholder="Ваш текст"
-                    id="floatingTextarea2"
-                    style="height: 100px"
+                          class="form-control"
+                          placeholder="Ваш текст"
+                          id="floatingTextarea2"
+                          style="height: 100px"
                   ></textarea>
                 </div>
               </div>
@@ -538,6 +595,130 @@
                 </div>
               </div>
             </form>
+          </div>
+        </div>
+        <div
+          class="tab-pane container"
+          id="less"
+          role="tabpanel"
+          aria-labelledby="gallery-tab"
+        >
+          <div class="wrapper">
+            <nav class="mynav">
+              <button class="mynav__theme">Change theme</button>
+              <ul class="mynav__menu">
+                <li class="mynav__item">
+                  <a href="#" class="mynav__link">Home</a>
+                </li>
+                <li class="mynav__item">
+                  <a href="#" class="mynav__link">About</a>
+                </li>
+                <li class="mynav__item">
+                  <a href="#" class="mynav__link">Items</a>
+                </li>
+                <li class="mynav__item">
+                  <a href="#" class="mynav__link">Contact</a>
+                </li>
+              </ul>
+            </nav>
+
+            <section class="main">
+              <div class="main__content">
+
+                <!-- В лабе не было класа main__tile -->
+                <div class="main__tile main__tile--danger">
+                  <div class="main__header">Product 1</div>
+                  <ul class="main__features">
+                    <li class="main__item">
+                      Feature 1<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">
+                      Feature 2<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">
+                      Feature 3<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">Feature 4</li>
+                    <li class="main__item">Feature 5</li>
+                  </ul>
+
+                  <div class="main__footer">
+                    <button class="main__button main__button--danger">
+                      Click on me!
+                    </button>
+                  </div>
+                </div>
+
+                <div class="main__tile main__tile--warning">
+                  <div class="main__header">Product 2</div>
+                  <ul class="main__features">
+                    <li class="main__item">
+                      Feature 1<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">Feature 2</li>
+                    <li class="main__item">
+                      Feature 3<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">
+                      Feature 4<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">Feature 5</li>
+                  </ul>
+
+                  <div class="main__footer">
+                    <button class="main__button main__button--warning">
+                      Click on me!
+                    </button>
+                  </div>
+                </div>
+
+                <div class="main__tile main__tile--primary">
+                  <div class="main__header">Product 3</div>
+                  <ul class="main__features">
+                    <li class="main__item">Feature 1</li>
+                    <li class="main__item">
+                      Feature 2<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">
+                      Feature 3<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">
+                      Feature 4<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">Feature 5</li>
+                  </ul>
+
+                  <div class="main__footer">
+                    <button class="main__button main__button--primary">
+                      Click on me!
+                    </button>
+                  </div>
+                </div>
+
+                <div class="main__tile main__tile--success">
+                  <div class="main__header">Product 4</div>
+                  <ul class="main__features">
+                    <li class="main__item">
+                      Feature 1<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">Feature 2</li>
+                    <li class="main__item">Feature 3</li>
+                    <li class="main__item">
+                      Feature 4<span class="main__plus">+</span>
+                    </li>
+                    <li class="main__item">
+                      Feature 5<span class="main__plus">+</span>
+                    </li>
+                  </ul>
+
+                  <div class="main__footer">
+                    <button class="main__button main__button--success">
+                      Click on me!
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
 
